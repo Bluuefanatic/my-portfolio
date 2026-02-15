@@ -14,7 +14,7 @@ const profile = {
     resumeUrl: "resume.pdf",
 };
 
-const revealElements = document.querySelectorAll(".reveal");
+const revealElements = document.querySelectorAll(".reveal");      // selects all element with 
 const year = document.getElementById("year");
 
 if (year) {
