@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joel Iziren | Frontend Engineer</title>
+    <meta name="description"
+        content="Joel Iziren's personal portfolio featuring frontend engineering and web development.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ink: #151316;
+            --paper: #f6f0e6;
+            --accent: #ff6a3d;
+            --accent-dark: #c8481d;
+            --ocean: #0b4b5a;
+            --sun: #f7b84b;
+            --muted: rgba(21, 19, 22, 0.65);
+            --glass: rgba(255, 255, 255, 0.6);
+            --shadow: 0 30px 60px rgba(16, 14, 18, 0.18);
+            --radius: 24px;
+            --radius-sm: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Space Grotesk", sans-serif;
+            color: var(--ink);
+            background: radial-gradient(circle at top left, rgba(255, 215, 160, 0.6), transparent 55%),
+                radial-gradient(circle at 80% 10%, rgba(135, 199, 224, 0.45), transparent 55%),
+                linear-gradient(180deg, #fef9f1 0%, #f0e6d5 65%, #f6f0e6 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .page {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grain {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+            mix-blend-mode: multiply;
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        header {
+            position: sticky;
+            top: 24px;
+            z-index: 4;
+        }
+
+        .nav {
+            margin: 24px auto 0;
+            max-width: 1120px;
+            background: var(--glass);
+            border-radius: 999px;
+            backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .brand-badge {
+            width: 42px;
+            height: 42px;
+            background: var(--accent);
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-family: "DM Serif Display", serif;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 20px rgba(255, 106, 61, 0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            padding: 8px 12px;
+            border-radius: 999px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            max-width: 1120px;
+            margin: 80px auto 40px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: "DM Serif Display", serif;
+            font-size: clamp(2.8rem, 5vw, 4.6rem);
+            margin: 0 0 16px;
+            line-height: 1.02;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: var(--muted);
+            margin: 0 0 28px;
+            max-width: 520px;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn {
+            border-radius: 999px;
+            border: 1px solid transparent;
+            padding: 12px 22px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 14px 30px rgba(255, 106, 61, 0.35);
+        }
+
+        .btn.primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn.ghost {
+            border-color: rgba(21, 19, 22, 0.2);
+            background: white;
+        }
+
+        .btn.ghost:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            display: grid;
+            gap: 22px;
+        }
+
+        .hero-card .stat {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stat h3 {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        .stat span {
+            color: var(--muted);
+        }
+
+        .section {
+            max-width: 1120px;
+            margin: 80px auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-title h2 {
+            font-family: "DM Serif Display", serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin: 0;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            max-width: 420px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 22px;
+        }
+
+        .projects {
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .project-card {
+            background: white;
+            padding: 22px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow);
+            display: grid;
+            gap: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .project-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--ocean);
+            font-weight: 600;
+        }
+
+        .project-swatch {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--sun), var(--accent));
+        }
+
+        .project-card h3 {
+            margin: 0;
+        }
+
+        .project-card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pill {
+            background: rgba(11, 75, 90, 0.1);
+            color: var(--ocean);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .resume-card {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            box-shadow: 0 16px 32px rgba(16, 14, 18, 0.12);
+            display: grid;
+            gap: 12px;
+        }
+
+        .resume-card h4 {
+            margin: 0;
+        }
+
+        .resume-card ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--muted);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 28px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 16px;
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(21, 19, 22, 0.2);
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: #fbf8f2;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .field.invalid input,
+        .field.invalid select,
+        .field.invalid textarea {
+            border-color: #c23b2f;
+            box-shadow: 0 0 0 2px rgba(194, 59, 47, 0.15);
+            background: #fff5f4;
+        }
+
+        .error-msg {
+            color: #c23b2f;
+            font-size: 0.8rem;
+            display: none;
+        }
+
+        .field.invalid .error-msg {
+            display: block;
+        }
+
+        .form-success {
+            background: rgba(11, 75, 90, 0.12);
+            color: var(--ocean);
+            padding: 12px 16px;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .form-success.is-visible {
+            display: block;
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 12, 16, 0.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            padding: 20px;
+        }
+
+        .modal-backdrop.is-open {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: var(--radius);
+            padding: 28px;
+            max-width: 720px;
+            width: min(92vw, 720px);
+            box-shadow: var(--shadow);
+            display: grid;
+            gap: 18px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            border: none;
+            background: rgba(21, 19, 22, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .modal-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            background: #f8f3ea;
+            padding: 14px;
+            border-radius: 14px;
+        }
+
+        .modal-meta h4 {
+            margin: 0 0 4px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .modal-meta p {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .about {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            display: grid;
+            gap: 24px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .about-card {
+            background: #f8f3ea;
+            border-radius: var(--radius-sm);
+            padding: 18px;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 16px;
+        }
+
+        .timeline-item {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: 18px;
+            box-shadow: 0 12px 30px rgba(16, 14, 18, 0.1);
+        }
+
+        .timeline-item span {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .cta-band {
+            background: linear-gradient(135deg, #0b4b5a, #14304a);
+            color: white;
+            border-radius: var(--radius);
+            padding: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-band h3 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-family: "DM Serif Display", serif;
+        }
+
+        .footer {
+            max-width: 1120px;
+            margin: 60px auto 40px;
+            padding: 0 24px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: all 0.7s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 860px) {
+            .nav {
+                flex-direction: column;
+                gap: 12px;
+                border-radius: 24px;
+            }
+
+            .section-title {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                position: static;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="grain" aria-hidden="true"></div>
+        <header>
+            <nav class="nav">
+                <div class="brand">
+                    <div class="brand-badge">JI</div>
+                    <span>Joel Iziren</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#work">Work</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#resume">Resume</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-text reveal">
+                    <p class="pill" data-field="role">Frontend Developer · Software Engineer</p>
+                    <h1 data-field="headline">Building responsive web applications with React, Next.js, and modern
+                        tools.</h1>
+                    <p data-field="intro">"I’m Joel Iziren, a Frontend Developer with hands-on experience building
+                        responsive web applications using React, Next.js, and Tailwind CSS. I specialize in reusable
+                        component design, form validation, and automated testing. Based in Nigeria, collaborating
+                        globally.</p>
+                    <div class="hero-cta">
+                        <a class="btn primary" href="#contact">Start a project</a>
+                        <a class="btn ghost" href="#work">View case studies</a>
+                    </div>
+                </div>
+                <div class="hero-card reveal">
+                    <div class="stat">
+                        <h3 data-field="statYears">1+ year</h3>
+                        <span>Professional experience</span>
+                    </div>
+                    <div class="stat">
+                        <h3 data-field="statLaunches">3+ projects</h3>
+                        <span>Completed projects</span>
+                    </div>
+                    <div class="stat">
+                        <h3 data-field="statTeams">2 teams</h3>
+                        <span>Team collaborations</span>
+                    </div>
+                    <div class="pill-row">
+                        <span class="pill">React & Next.js</span>
+                        <span class="pill">Tailwind CSS</span>
+                        <span class="pill">Testing</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="work">
+                <div class="section-title reveal">
+                    <div>
+                        <h2>Selected work</h2>
+                        <p>Web applications and projects built with React, Next.js, and modern tools.</p>
+                    </div>
+                    <a class="btn ghost" href="#contact">Get in touch</a>
+                </div>
+                <div class="grid projects">
+                    <article class="project-card reveal">
+                        <div class="project-tag">
+                            <div class="project-swatch"></div>
+                            Fullstack Web App
+                        </div>
+                        <h3>Amber Alert PRO</h3>
+                        <p>Web application for reporting missing persons and sending real-time alerts.</p>
+                        <div class="pill-row">
+                            <span class="pill">React</span>
+                            <span class="pill">Next.js</span>
+                            <span class="pill">Node.js</span>
+                        </div>
+                        <button class="btn ghost view-project" data-project-title="Amber Alert PRO"
+                            data-project-summary="Developed a web application for reporting missing persons and sending real-time alerts with location-based features."
+                            data-project-role="Frontend Developer" data-project-duration="3 months"
+                            data-project-impact="Reduced input errors by 20% with Formik validation and improved UI consistency."
+                            data-project-highlights="React components,Formik validation,Google Maps API,Firebase Auth,Tailwind CSS">View
+                            case</button>
+                    </article>
+                    <article class="project-card reveal">
+                        <div class="project-tag">
+                            <div class="project-swatch" style="background: linear-gradient(135deg, #8fd3f4, #84fab0);">
+                            </div>
+                            Portfolio Site
+                        </div>
+                        <h3>Personal Portfolio</h3>
+                        <p>Responsive portfolio website showcasing projects and skills with modern UI.</p>
+                        <div class="pill-row">
+                            <span class="pill">JavaScript</span>
+                            <span class="pill">CSS</span>
+                            <span class="pill">Responsive design</span>
+                        </div>
+                        <button class="btn ghost view-project" data-project-title="Personal Portfolio"
+                            data-project-summary="Built a fully responsive portfolio website with smooth animations and interactive UI components."
+                            data-project-role="Frontend Developer" data-project-duration="2 weeks"
+                            data-project-impact="Clean, maintainable codebase with professional presentation."
+                            data-project-highlights="Vanilla JavaScript,CSS animations,Form validation,Responsive grid">View
+                            case</button>
+                    </article>
+                    <article class="project-card reveal">
+                        <div class="project-tag">
+                            <div class="project-swatch" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                            </div>
+                            Testing & QA
+                        </div>
+                        <h3>Automated Testing Suite</h3>
+                        <p>End-to-end testing implementation for web and mobile applications.</p>
+                        <div class="pill-row">
+                            <span class="pill">Cypress</span>
+                            <span class="pill">Appium</span>
+                            <span class="pill">JMeter</span>
+                        </div>
+                        <button class="btn ghost view-project" data-project-title="Automated Testing Suite"
+                            data-project-summary="Implemented automated frontend and backend testing with Cypress, Appium, and JMeter for web and mobile apps."
+                            data-project-role="QA Engineer" data-project-duration="Ongoing"
+                            data-project-impact="Improved test coverage and reduced manual testing time."
+                            data-project-highlights="Cypress E2E tests,Appium mobile testing,Performance testing with JMeter">View
+                            case</button>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" id="about">
+                <div class="about reveal">
+                    <div class="section-title">
+                        <div>
+                            <h2>About me</h2>
+                            <p>Frontend developer focused on building responsive, user-centered web applications with
+                                clean code.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="about-grid">
+                        <div class="about-card">
+                            <h3>Component-driven</h3>
+                            <p>I build reusable, maintainable components with React and Next.js, focusing on clean
+                                architecture and consistent UI patterns across applications.</p>
+                        </div>
+                        <div class="about-card">
+                            <h3>Quality-focused</h3>
+                            <p>I implement automated testing with Cypress and Appium, ensuring reliability and reducing
+                                bugs before they reach production.</p>
+                        </div>
+                        <div class="about-card">
+                            <h3>Team collaboration</h3>
+                            <p>Experienced working in team environments, maintaining clean Git workflows, and
+                                collaborating
+                                on UX improvements and code reviews.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="resume">
+                <div class="section-title reveal">
+                    <div>
+                        <h2>Resume snapshot</h2>
+                        <p>Download the full resume or scan a quick overview below.</p>
+                    </div>
+                    <a class="btn ghost" data-field="resumeLink" href="resume.txt" download>Download resume</a>
+                </div>
+                <div class="resume-grid">
+                    <div class="resume-card reveal">
+                        <h4>Focus areas</h4>
+                        <ul>
+                            <li>Responsive web development</li>
+                            <li>Reusable component design</li>
+                            <li>Automated testing & QA</li>
+                        </ul>
+                    </div>
+                    <div class="resume-card reveal">
+                        <h4>Education</h4>
+                        <ul>
+                            <li>BSc Computer Science (2025)</li>
+                            <li>ALX Software Engineering</li>
+                            <li>Frontend Specialization</li>
+                        </ul>
+                    </div>
+                    <div class="resume-card reveal">
+                        <h4>Technical Skills</h4>
+                        <ul>
+                            <li>React, Next.js, Tailwind CSS</li>
+                            <li>JavaScript, TypeScript</li>
+                            <li>Cypress, Appium, JMeter</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="skills">
+                <div class="section-title reveal">
+                    <div>
+                        <h2>Skills & tools</h2>
+                        <p>Frontend development, testing, and modern JavaScript frameworks.</p>
+                    </div>
+                </div>
+                <div class="grid projects">
+                    <div class="project-card reveal">
+                        <h3>Frontend Development</h3>
+                        <p>Building responsive web applications with modern JavaScript frameworks and component
+                            libraries.</p>
+                        <div class="pill-row">
+                            <span class="pill">React</span>
+                            <span class="pill">Next.js</span>
+                            <span class="pill">Tailwind CSS</span>
+                            <span class="pill">TypeScript</span>
+                        </div>
+                    </div>
+                    <div class="project-card reveal">
+                        <h3>Testing & QA</h3>
+                        <p>Automated testing for frontend and backend, ensuring quality and reliability.</p>
+                        <div class="pill-row">
+                            <span class="pill">Cypress</span>
+                            <span class="pill">Appium</span>
+                            <span class="pill">JMeter</span>
+                        </div>
+                    </div>
+                    <div class="project-card reveal">
+                        <h3>Backend & Tools</h3>
+                        <p>Fullstack exposure with Node.js, Express, MongoDB, and version control.</p>
+                        <div class="pill-row">
+                            <span class="pill">Node.js</span>
+                            <span class="pill">Express</span>
+                            <span class="pill">MongoDB</span>
+                            <span class="pill">Git/GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="experience">
+                <div class="section-title reveal">
+                    <div>
+                        <h2>Experience</h2>
+                        <p>Professional journey building web applications and learning software engineering
+                            fundamentals.</p>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <h3>Software Engineering Intern · ALX Software Engineering Program</h3>
+                        <span>Sept 2023 - Nov 2024</span>
+                        <p>Completed intensive program focused on frontend development, fullstack exposure, and software
+                            testing fundamentals. Built reusable components for Amber Alert PRO and implemented form
+                            validation, reducing input errors by 20%.</p>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <h3>Computer Science Student · University of Abuja</h3>
+                        <span>2021 - 2025</span>
+                        <p>Pursuing BSc in Computer Science with focus on web development, algorithms, and software
+                            engineering principles.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="contact">
+                <div class="cta-band reveal">
+                    <div>
+                        <h3>Let's build something together.</h3>
+                        <p>Open for frontend development projects, collaboration, and freelance opportunities.</p>
+                    </div>
+                    <div class="hero-cta">
+                        <a class="btn primary" data-field="emailLink" href="mailto:izirenjoel@gmail.com">Email me</a>
+                        <a class="btn ghost" data-field="linkedinLink" href="https://www.linkedin.com/in/joel-iziren"
+                            target="_blank" rel="noreferrer">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-card reveal">
+                        <h3>Project intake</h3>
+                        <p>Share a few details and I will respond within 48 hours. If you'd rather email, use the button
+                            above.</p>
+                        <div class="pill-row">
+                            <span class="pill">Frontend development</span>
+                            <span class="pill">React/Next.js</span>
+                            <span class="pill">QA & Testing</span>
+                        </div>
+                    </div>
+                    <div class="contact-card reveal">
+                        <form class="contact-form" data-contact-form>
+                            <div class="field">
+                                <label for="name">Full name</label>
+                                <input id="name" name="name" type="text" placeholder="Jane Appleseed" required>
+                                <span class="error-msg">Please enter your name.</span>
+                            </div>
+                            <div class="field">
+                                <label for="email">Email address</label>
+                                <input id="email" name="email" type="email" placeholder="jane@email.com" required>
+                                <span class="error-msg">Please enter a valid email.</span>
+                            </div>
+                            <div class="field">
+                                <label for="type">Project type</label>
+                                <select id="type" name="type" required>
+                                    <option value="">Select one</option>
+                                    <option value="Web application">Web application</option>
+                                    <option value="Frontend development">Frontend development</option>
+                                    <option value="Component library">Component library</option>
+                                    <option value="Testing & QA">Testing & QA</option>
+                                </select>
+                                <span class="error-msg">Please select a project type.</span>
+                            </div>
+                            <div class="field">
+                                <label for="budget">Budget range</label>
+                                <select id="budget" name="budget" required>
+                                    <option value="">Select one</option>
+                                    <option value="$10k-$25k">$10k-$25k</option>
+                                    <option value="$25k-$50k">$25k-$50k</option>
+                                    <option value="$50k-$100k">$50k-$100k</option>
+                                    <option value="$100k+">$100k+</option>
+                                </select>
+                                <span class="error-msg">Please select a budget range.</span>
+                            </div>
+                            <div class="field">
+                                <label for="message">Project details</label>
+                                <textarea id="message" name="message"
+                                    placeholder="Tell me about your goals, timeline, and team." required></textarea>
+                                <span class="error-msg">Please share a short message.</span>
+                            </div>
+                            <button class="btn primary" type="submit">Send inquiry</button>
+                            <div class="form-success" role="status" aria-live="polite">Thanks! Your message is ready. I
+                                will follow up soon.</div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <span data-field="location">Based in Nigeria · Available worldwide</span>
+            <span>© <span id="year"></span> <span data-field="name">Joel Iziren</span>. All rights reserved.</span>
+        </footer>
+    </div>
+    <div class="modal-backdrop" data-modal>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal-close" type="button" data-modal-close>✕</button>
+            <div>
+                <p class="pill" data-modal-tag>Case Study</p>
+                <h2 id="modal-title">Project title</h2>
+                <p data-modal-summary>Project summary goes here.</p>
+            </div>
+            <div class="modal-meta">
+                <div>
+                    <h4>Role</h4>
+                    <p data-modal-role>Frontend Developer</p>
+                </div>
+                <div>
+                    <h4>Timeline</h4>
+                    <p data-modal-duration>6 months</p>
+                </div>
+                <div>
+                    <h4>Impact</h4>
+                    <p data-modal-impact>Increased activation by 22%.</p>
+                </div>
+            </div>
+            <div>
+                <h3>Highlights</h3>
+                <div class="pill-row" data-modal-highlights></div>
+            </div>
+            <div class="hero-cta">
+                <a class="btn primary" href="#contact">Start a similar project</a>
+                <button class="btn ghost" type="button" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
