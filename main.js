@@ -14,14 +14,14 @@ const profile = {
     resumeUrl: "resume.pdf",
 };
 
-const revealElements = document.querySelectorAll(".reveal");      // selects all element with 
+const revealElements = document.querySelectorAll(".reveal");      // selects all element with the "reveal" class and stores them in a node list called revealElements. this is used for the scroll reveal animation, where elements will fade in as they come into view while scrolling
 const year = document.getElementById("year");
 
 if (year) {
-    year.textContent = new Date().getFullYear();
+    year.textContent = new Date().getFullYear();         
 }
 
-const profileFields = document.querySelectorAll("[data-field]");
+const profileFields = document.querySelectorAll("[data-field]");    //
 profileFields.forEach((field) => {
     const key = field.getAttribute("data-field");
     if (key && profile[key]) {
