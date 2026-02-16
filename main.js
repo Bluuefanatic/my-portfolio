@@ -44,7 +44,7 @@ if (resumeLink) {
     resumeLink.setAttribute("href", profile.resumeUrl);
 }
 
-const revealOnIntersect = new IntersectionObserver(
+const revealOnIntersect = new IntersectionObserver(      //
     (entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -126,7 +126,7 @@ const openModal = (button) => {
     modal.classList.add("is-open");
 };
 
-projectButtons.forEach((button) => {
+projectButtons.forEach((button) => {                                //
     button.addEventListener("click", () => openModal(button));
 });
 
