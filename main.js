@@ -17,7 +17,7 @@ const profile = {
 const revealElements = document.querySelectorAll(".reveal");      // selects all element with the "reveal" class and stores them in a node list called revealElements. this is used for the scroll reveal animation, where elements will fade in as they come into view while scrolling
 const year = document.getElementById("year");
 
-if (year) {
+if (year) {                                                       // if the element with the id "year" exists, it sets its text content to the current year using JavaScript's Date object. This is a common technique to keep the copyright year in the footer up to date automatically without needing manual changes each year.
     year.textContent = new Date().getFullYear();
 }
 
