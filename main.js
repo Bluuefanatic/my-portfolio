@@ -18,7 +18,7 @@ const revealElements = document.querySelectorAll(".reveal");      // selects all
 const year = document.getElementById("year");
 
 if (year) {
-    year.textContent = new Date().getFullYear();         
+    year.textContent = new Date().getFullYear();
 }
 
 const profileFields = document.querySelectorAll("[data-field]");    //
@@ -166,9 +166,7 @@ const validateField = (field, isValid) => {
 };
 
 if (form) {
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
+    form.addEventListener("submit", async (event) => {
         const nameField = form.querySelector("#name")?.closest(".field");
         const emailField = form.querySelector("#email")?.closest(".field");
         const typeField = form.querySelector("#type")?.closest(".field");
@@ -194,12 +192,18 @@ if (form) {
             budgetValue &&
             messageValue;
 
-        if (successMessage) {
-            successMessage.classList.toggle("is-visible", Boolean(isValid));
+        if (!isValid) {
+            event.preventDefault();
+            return;
         }
 
-        if (isValid) {
-            form.reset();
+        // Let Formspree handle the submission
+        // Show success message after form is submitted
+        if (successMessage) {
+            setTimeout(() => {
+                successMessage.classList.add("is-visible");
+                form.reset();
+            }, 1000);
         }
     });
 }
