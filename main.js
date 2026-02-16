@@ -126,7 +126,7 @@ const openModal = (button) => {
     modal.classList.add("is-open");
 };
 
-projectButtons.forEach((button) => {                                //
+projectButtons.forEach((button) => {
     button.addEventListener("click", () => openModal(button));
 });
 
