@@ -167,6 +167,8 @@ const validateField = (field, isValid) => {
 
 if (form) {
     form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
         const nameField = form.querySelector("#name")?.closest(".field");
         const emailField = form.querySelector("#email")?.closest(".field");
         const typeField = form.querySelector("#type")?.closest(".field");
@@ -193,17 +195,40 @@ if (form) {
             messageValue;
 
         if (!isValid) {
-            event.preventDefault();
             return;
         }
 
-        // Let Formspree handle the submission
-        // Show success message after form is submitted
         if (successMessage) {
-            setTimeout(() => {
-                successMessage.classList.add("is-visible");
+            successMessage.textContent = "Sending...";
+            successMessage.classList.add("is-visible");
+        }
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+                headers: {
+                    Accept: "application/json",
+                },
+            });
+
+            if (response.ok) {
+                if (successMessage) {
+                    successMessage.textContent =
+                        "Thanks! Your message has been sent. I will follow up soon.";
+                }
                 form.reset();
-            }, 1000);
+            } else {
+                if (successMessage) {
+                    successMessage.textContent =
+                        "Sorry, something went wrong. Please email me directly.";
+                }
+            }
+        } catch (error) {
+            if (successMessage) {
+                successMessage.textContent =
+                    "Sorry, something went wrong. Please email me directly.";
+            }
         }
     });
 }
