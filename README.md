@@ -1,33 +1,100 @@
-# Joel Iziren Portfolio
+# Portfolio Fullstack Project
 
-This repository contains Joel Iziren's personal portfolio site: a single-page, content-rich frontend portfolio with a custom visual style, project case studies, resume links, and a contact form that submits through Formspree.
-
-## What This Site Shows
-
-- A polished landing page for Joel Iziren, a frontend developer and software engineer.
-- Selected projects, including Amber Alert PRO, the portfolio itself, and an automated testing suite.
-- A resume snapshot with a downloadable `resume.pdf`.
-- A contact section with email, LinkedIn, and a validated inquiry form.
-- Animated UI behavior driven by `main.js`, including scroll reveals, modal case studies, and form validation.
+A fullstack React portfolio website with Vite frontend and Express backend, preserving the original UI/UX and CSS-based animations.
 
 ## Project Structure
 
-- `index.html` - the primary portfolio markup and styling.
-- `main.js` - interaction logic for profile content, animations, modal behavior, and contact form handling.
-- `web.js` - generates the HTML served by the Node server.
-- `server.js` - lightweight HTTP server for serving the portfolio and static assets.
-- `web.sh` - convenience script that starts the site with Node.
-- `resume.pdf` - downloadable resume linked from the page.
-- `resume.txt` - plain-text resume copy.
-- `assets/` - static assets such as the LinkedIn icon and social/OG images.
+```
+portfolio/
+├── frontend/          # Vite React app
+│   ├── src/
+│   │   ├── components/    # React components
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── index.html
+│   ├── vite.config.js
+│   └── package.json
+├── backend/           # Express.js API
+│   ├── src/
+│   │   └── index.js
+│   └── package.json
+├── assets/            # Shared static assets
+├── package.json       # Root package.json with monorepo scripts
+└── README.md
+```
 
-## Running Locally
+## What This Project Includes
 
-You only need Node.js installed.
+- **React Frontend**: Modern React components with Vite for fast development
+- **Express Backend**: RESTful API for profile data and contact form handling
+- **CSS Animations**: Custom CSS-based motion (no Framer Motion) for optimal performance
+- **Responsive Design**: Mobile-first responsive layout
+- **Project Showcase**: Case studies with modal interactions
+- **Contact Form**: Form validation and Formspree integration
+- **Development Scripts**: Unified npm scripts for local development
+
+## Quick Start
+
+Install dependencies for all packages:
 
 ```bash
-./web.sh
+npm run install:all
 ```
+
+### Development
+
+Run both frontend and backend together:
+
+```bash
+npm run dev
+```
+
+Or run them separately:
+
+```bash
+npm run dev:frontend    # http://localhost:5173
+npm run dev:backend     # http://localhost:3000
+```
+
+### Production Build
+
+```bash
+npm run build
+```
+
+This builds both frontend and backend for production.
+
+## Technology Stack
+
+**Frontend:**
+- React 18
+- Vite (fast build tool)
+- CSS (custom CSS-based animations)
+
+**Backend:**
+- Node.js
+- Express.js
+- CORS enabled
+
+## Requirements
+
+- Node.js 16+
+- npm or yarn
+
+## Development Workflow
+
+- **Frontend development**: Hot reload at http://localhost:5173
+- **Backend development**: Auto-restart with `--watch` flag
+- **API proxy**: Frontend proxies `/api` requests to backend on port 3000
+- **Production**: Backend serves frontend static files
+
+## Next Phases
+
+- Phase 2: Component refinement and styling polish
+- Phase 3: State management and advanced API integration
+- Phase 4: Deployment configuration (Vercel, Render, etc.)
+- Phase 5: Additional features (email service, CMS integration, etc.)
 
 On Windows PowerShell, run:
 
