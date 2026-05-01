@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import styles from './ProjectModal.module.css'
+import shared from '../styles/shared.module.css'
 
 const ProjectModal = ({ project, onClose }) => {
     useEffect(() => {
@@ -24,7 +25,7 @@ const ProjectModal = ({ project, onClose }) => {
             <div className={styles.modal} role="dialog" aria-modal="true" aria-labelledby="modal-title">
                 <button className={styles.modalClose} type="button" onClick={onClose}>×</button>
                 <div>
-                    <p className={styles.pill}>Case Study</p>
+                    <p className={shared.pill}>Case Study</p>
                     <h2 id="modal-title">{project.title}</h2>
                     <p>{project.summary}</p>
                 </div>
@@ -44,15 +45,15 @@ const ProjectModal = ({ project, onClose }) => {
                 </div>
                 <div>
                     <h3>Highlights</h3>
-                    <div className={styles.pillRow}>
+                    <div className={shared.pillRow}>
                         {project.highlights.map((highlight, idx) => (
-                            <span key={idx} className={styles.pill}>{highlight}</span>
+                            <span key={idx} className={shared.pill}>{highlight}</span>
                         ))}
                     </div>
                 </div>
-                <div className={styles.heroCta}>
-                    <a className={`${styles.btn} ${styles.btnPrimary}`} href="#contact">Start a similar project</a>
-                    <button className={`${styles.btn} ${styles.btnGhost}`} type="button" onClick={onClose}>Close</button>
+                <div className={shared.heroCta}>
+                    <a className={`${shared.btn} ${shared.btnPrimary}`} href="#contact">Start a similar project</a>
+                    <button className={`${shared.btn} ${shared.btnGhost}`} type="button" onClick={onClose}>Close</button>
                 </div>
             </div>
         </div>

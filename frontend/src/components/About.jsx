@@ -1,11 +1,12 @@
 import { about } from '../data/about'
 import styles from './About.module.css'
+import shared from '../styles/shared.module.css'
 
 const About = () => {
     return (
-        <section className={styles.section} id="about">
+        <section className={shared.section} id="about">
             <div className={`${styles.about} reveal`}>
-                <div className={styles.sectionTitle}>
+            <div className={shared.sectionTitle}>
                     <div>
                         <h2>About me</h2>
                         <p>Frontend developer focused on building responsive, user-centered web applications with clean code.</p>

@@ -1,0 +1,79 @@
+.section {
+  max-width: var(--max-content-width);
+  margin: var(--space-section-y) auto;
+  padding: 0 var(--space-page-x);
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.sectionTitle h2 {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.sectionTitle p {
+  color: var(--muted);
+  max-width: 420px;
+}
+
+.heroCta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  background: rgba(11, 75, 90, 0.1);
+  color: var(--ocean);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btn {
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  padding: 12px 22px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 14px 30px rgba(255, 106, 61, 0.35);
+}
+
+.btnPrimary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+.btnGhost {
+  border-color: rgba(21, 19, 22, 0.2);
+  background: white;
+}
+
+.btnGhost:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}

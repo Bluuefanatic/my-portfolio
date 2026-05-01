@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { contactInfo } from '../data/contact'
 import styles from './Contact.module.css'
+import shared from '../styles/shared.module.css'
 
 const Contact = ({ profile }) => {
     const [formData, setFormData] = useState({
@@ -72,15 +73,15 @@ const Contact = ({ profile }) => {
     }
 
     return (
-        <section className={styles.section} id="contact">
+        <section className={shared.section} id="contact">
             <div className={`${styles.ctaBand} reveal`}>
                 <div>
                     <h3>{contactInfo.ctaTitle}</h3>
                     <p>{contactInfo.ctaDescription}</p>
                 </div>
-                <div className={styles.heroCta}>
-                    <a className={`${styles.btn} ${styles.btnPrimary}`} href={`mailto:${profile.email}`}>Email me</a>
-                    <a className={`${styles.btn} ${styles.btnGhost}`} href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+                <div className={shared.heroCta}>
+                    <a className={`${shared.btn} ${shared.btnPrimary}`} href={`mailto:${profile.email}`}>Email me</a>
+                    <a className={`${shared.btn} ${shared.btnGhost}`} href={profile.linkedin} target="_blank" rel="noopener noreferrer">
                         <img src="/linkedin.svg" alt="LinkedIn" className={styles.socialIcon} />
                         LinkedIn
                     </a>
@@ -90,9 +91,9 @@ const Contact = ({ profile }) => {
                 <div className={`${styles.contactCard} reveal`}>
                     <h3>{contactInfo.projectIntakeTitle}</h3>
                     <p>{contactInfo.projectIntakeDescription}</p>
-                    <div className={styles.pillRow}>
+                    <div className={shared.pillRow}>
                         {contactInfo.projectIntakePills.map((pill, idx) => (
-                            <span key={idx} className={styles.pill}>{pill}</span>
+                            <span key={idx} className={shared.pill}>{pill}</span>
                         ))}
                     </div>
                 </div>
@@ -171,7 +172,7 @@ const Contact = ({ profile }) => {
                             ></textarea>
                             {errors.message && <span className={styles.errorMsg}>{errors.message}</span>}
                         </div>
-                        <button className={`${styles.btn} ${styles.btnPrimary}`} type="submit">Send inquiry</button>
+                        <button className={`${shared.btn} ${shared.btnPrimary}`} type="submit">Send inquiry</button>
                         {statusMessage && (
                             <div className={styles.formSuccess} role="status" aria-live="polite">
                                 {statusMessage}

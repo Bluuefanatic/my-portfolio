@@ -1,5 +1,6 @@
 import { projects } from '../data/projects'
 import styles from './Work.module.css'
+import shared from '../styles/shared.module.css'
 
 const Work = ({ onProjectClick }) => {
     const swatchClassMap = {
@@ -8,13 +9,13 @@ const Work = ({ onProjectClick }) => {
     }
 
     return (
-        <section className={styles.section} id="work">
-            <div className={`${styles.sectionTitle} reveal`}>
+        <section className={shared.section} id="work">
+            <div className={`${shared.sectionTitle} reveal`}>
                 <div>
                     <h2>Selected work</h2>
                     <p>Web applications and projects built with React, Next.js, and modern tools.</p>
                 </div>
-                <a className={styles.btnGhost} href="#contact">Get in touch</a>
+                <a className={`${shared.btn} ${shared.btnGhost}`} href="#contact">Get in touch</a>
             </div>
             <div className={`${styles.grid} ${styles.projects}`}>
                 {projects.map((project) => (
@@ -25,13 +26,13 @@ const Work = ({ onProjectClick }) => {
                         </div>
                         <h3>{project.title}</h3>
                         <p>{project.description}</p>
-                        <div className={styles.pillRow}>
+                        <div className={shared.pillRow}>
                             {project.pills.map((pill, idx) => (
-                                <span key={idx} className={styles.pill}>{pill}</span>
+                                <span key={idx} className={shared.pill}>{pill}</span>
                             ))}
                         </div>
                         <button
-                            className={styles.btnGhost}
+                            className={`${shared.btn} ${shared.btnGhost}`}
                             onClick={() => onProjectClick(project)}
                         >
                             View case

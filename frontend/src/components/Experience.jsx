@@ -1,10 +1,11 @@
 import { experience } from '../data/experience'
 import styles from './Experience.module.css'
+import shared from '../styles/shared.module.css'
 
 const Experience = () => {
     return (
-        <section className={styles.section} id="experience">
-            <div className={`${styles.sectionTitle} reveal`}>
+        <section className={shared.section} id="experience">
+            <div className={`${shared.sectionTitle} reveal`}>
                 <div>
                     <h2>Experience</h2>
                     <p>Professional journey building web applications and learning software engineering fundamentals.</p>
