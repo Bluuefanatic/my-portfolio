@@ -1,5 +1,4 @@
 import { resumeSnapshot } from '../data/resume'
-import { profile } from '../data/profile'
 
 const Resume = ({ profile: profileProp }) => {
     return (
