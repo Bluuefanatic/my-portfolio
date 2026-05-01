@@ -1,0 +1,12 @@
+.footer {
+  max-width: var(--max-content-width);
+  margin: 60px auto 40px;
+  padding: 0 var(--space-page-x);
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}

@@ -1,0 +1,121 @@
+.section {
+  max-width: var(--max-content-width);
+  margin: var(--space-section-y) auto;
+  padding: 0 var(--space-page-x);
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.sectionTitle h2 {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.sectionTitle p {
+  color: var(--muted);
+  max-width: 420px;
+}
+
+.grid {
+  display: grid;
+  gap: 22px;
+}
+
+.projects {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.projectCard {
+  background: white;
+  padding: 22px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: grid;
+  gap: 16px;
+  transition: transform 0.3s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-6px);
+}
+
+.projectTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--ocean);
+  font-weight: 600;
+}
+
+.projectSwatch {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--sun), var(--accent));
+}
+
+.gradientBlueGreen {
+  background: linear-gradient(135deg, #8fd3f4, #84fab0);
+}
+
+.gradientPinkRed {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.projectCard h3 {
+  margin: 0;
+}
+
+.projectCard p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  background: rgba(11, 75, 90, 0.1);
+  color: var(--ocean);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btnGhost {
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(21, 19, 22, 0.2);
+  background: white;
+  padding: 12px 22px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btnGhost:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 860px) {
+  .sectionTitle {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

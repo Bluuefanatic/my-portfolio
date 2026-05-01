@@ -1,18 +1,19 @@
 import { resumeSnapshot } from '../data/resume'
+import styles from './Resume.module.css'
 
 const Resume = ({ profile: profileProp }) => {
     return (
-        <section className="section" id="resume">
-            <div className="section-title reveal">
+        <section className={styles.section} id="resume">
+            <div className={`${styles.sectionTitle} reveal`}>
                 <div>
                     <h2>Resume snapshot</h2>
                     <p>Download the full resume or scan a quick overview below.</p>
                 </div>
-                <a className="btn ghost" href={profileProp.resumeUrl} download>Download resume</a>
+                <a className={styles.btnGhost} href={profileProp.resumeUrl} download>Download resume</a>
             </div>
-            <div className="resume-grid">
+            <div className={styles.resumeGrid}>
                 {resumeSnapshot.map((card) => (
-                    <div key={card.id} className="resume-card reveal">
+                    <div key={card.id} className={`${styles.resumeCard} reveal`}>
                         <h4>{card.title}</h4>
                         <ul>
                             {card.items.map((item, idx) => (

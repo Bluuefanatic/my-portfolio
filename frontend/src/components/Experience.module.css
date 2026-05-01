@@ -1,0 +1,43 @@
+.section {
+  max-width: var(--max-content-width);
+  margin: var(--space-section-y) auto;
+  padding: 0 var(--space-page-x);
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.sectionTitle h2 {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.sectionTitle p {
+  color: var(--muted);
+  max-width: 420px;
+}
+
+.timeline {
+  display: grid;
+  gap: 16px;
+}
+
+.timelineItem {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.timelineItem span {
+  font-size: 0.85rem;
+  color: var(--muted);
+}

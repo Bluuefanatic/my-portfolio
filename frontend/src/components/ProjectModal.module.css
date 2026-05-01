@@ -1,0 +1,112 @@
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 12, 16, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 20px;
+}
+
+.isOpen {
+  display: flex;
+}
+
+.modal {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  max-width: 720px;
+  width: min(92vw, 720px);
+  box-shadow: var(--shadow-lg);
+  display: grid;
+  gap: 18px;
+  position: relative;
+}
+
+.modalClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: rgba(21, 19, 22, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.modalMeta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  background: #f8f3ea;
+  padding: 14px;
+  border-radius: var(--radius-md);
+}
+
+.modalMeta h4 {
+  margin: 0 0 4px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.modalMeta p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.pill {
+  background: rgba(11, 75, 90, 0.1);
+  color: var(--ocean);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.heroCta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn {
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  padding: 12px 22px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 14px 30px rgba(255, 106, 61, 0.35);
+}
+
+.btnPrimary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+.btnGhost {
+  border-color: rgba(21, 19, 22, 0.2);
+  background: white;
+}
+
+.btnGhost:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}

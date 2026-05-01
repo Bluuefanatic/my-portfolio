@@ -1,0 +1,150 @@
+.section {
+  max-width: var(--max-content-width);
+  margin: var(--space-section-y) auto;
+  padding: 0 var(--space-page-x);
+  position: relative;
+  z-index: 2;
+}
+
+.ctaBand {
+  background: linear-gradient(135deg, #0b4b5a, #14304a);
+  color: white;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-lg);
+}
+
+.ctaBand h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-family: "DM Serif Display", serif;
+}
+
+.heroCta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn {
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  padding: 12px 22px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 14px 30px rgba(255, 106, 61, 0.35);
+}
+
+.btnPrimary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+.btnGhost {
+  border-color: rgba(21, 19, 22, 0.2);
+  background: white;
+}
+
+.btnGhost:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.socialIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.contactCard {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+}
+
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  background: rgba(11, 75, 90, 0.1);
+  color: var(--ocean);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.contactForm {
+  display: grid;
+  gap: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+.input,
+.select,
+.textarea {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(21, 19, 22, 0.2);
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: #fbf8f2;
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.fieldInvalid .input,
+.fieldInvalid .select,
+.fieldInvalid .textarea {
+  border-color: #c23b2f;
+  box-shadow: 0 0 0 2px rgba(194, 59, 47, 0.15);
+  background: #fff5f4;
+}
+
+.errorMsg {
+  color: #c23b2f;
+  font-size: 0.8rem;
+  display: block;
+}
+
+.formSuccess {
+  background: rgba(11, 75, 90, 0.12);
+  color: var(--ocean);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  display: block;
+}

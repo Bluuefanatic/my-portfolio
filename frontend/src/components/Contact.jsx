@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { contactInfo } from '../data/contact'
+import styles from './Contact.module.css'
 
 const Contact = ({ profile }) => {
     const [formData, setFormData] = useState({
@@ -71,35 +72,36 @@ const Contact = ({ profile }) => {
     }
 
     return (
-        <section className="section" id="contact">
-            <div className="cta-band reveal">
+        <section className={styles.section} id="contact">
+            <div className={`${styles.ctaBand} reveal`}>
                 <div>
                     <h3>{contactInfo.ctaTitle}</h3>
                     <p>{contactInfo.ctaDescription}</p>
                 </div>
-                <div className="hero-cta">
-                    <a className="btn primary" href={`mailto:${profile.email}`}>Email me</a>
-                    <a className="btn ghost" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-                        <img src="/linkedin.svg" alt="LinkedIn" className="social-icon" />
+                <div className={styles.heroCta}>
+                    <a className={`${styles.btn} ${styles.btnPrimary}`} href={`mailto:${profile.email}`}>Email me</a>
+                    <a className={`${styles.btn} ${styles.btnGhost}`} href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+                        <img src="/linkedin.svg" alt="LinkedIn" className={styles.socialIcon} />
                         LinkedIn
                     </a>
                 </div>
             </div>
-            <div className="contact-grid">
-                <div className="contact-card reveal">
+            <div className={styles.contactGrid}>
+                <div className={`${styles.contactCard} reveal`}>
                     <h3>{contactInfo.projectIntakeTitle}</h3>
                     <p>{contactInfo.projectIntakeDescription}</p>
-                    <div className="pill-row">
+                    <div className={styles.pillRow}>
                         {contactInfo.projectIntakePills.map((pill, idx) => (
-                            <span key={idx} className="pill">{pill}</span>
+                            <span key={idx} className={styles.pill}>{pill}</span>
                         ))}
                     </div>
                 </div>
-                <div className="contact-card reveal">
-                    <form className="contact-form" onSubmit={handleSubmit}>
-                        <div className={`field ${errors.name ? 'invalid' : ''}`}>
+                <div className={`${styles.contactCard} reveal`}>
+                    <form className={styles.contactForm} onSubmit={handleSubmit}>
+                        <div className={`${styles.field} ${errors.name ? styles.fieldInvalid : ''}`}>
                             <label htmlFor="name">Full name</label>
                             <input
+                                className={styles.input}
                                 id="name"
                                 name="name"
                                 type="text"
@@ -108,11 +110,12 @@ const Contact = ({ profile }) => {
                                 onChange={handleChange}
                                 required
                             />
-                            {errors.name && <span className="error-msg">{errors.name}</span>}
+                            {errors.name && <span className={styles.errorMsg}>{errors.name}</span>}
                         </div>
-                        <div className={`field ${errors.email ? 'invalid' : ''}`}>
+                        <div className={`${styles.field} ${errors.email ? styles.fieldInvalid : ''}`}>
                             <label htmlFor="email">Email address</label>
                             <input
+                                className={styles.input}
                                 id="email"
                                 name="email"
                                 type="email"
@@ -121,11 +124,12 @@ const Contact = ({ profile }) => {
                                 onChange={handleChange}
                                 required
                             />
-                            {errors.email && <span className="error-msg">{errors.email}</span>}
+                            {errors.email && <span className={styles.errorMsg}>{errors.email}</span>}
                         </div>
-                        <div className={`field ${errors.type ? 'invalid' : ''}`}>
+                        <div className={`${styles.field} ${errors.type ? styles.fieldInvalid : ''}`}>
                             <label htmlFor="type">Project type</label>
                             <select
+                                className={styles.select}
                                 id="type"
                                 name="type"
                                 value={formData.type}
@@ -136,11 +140,12 @@ const Contact = ({ profile }) => {
                                     <option key={idx} value={option.value}>{option.label}</option>
                                 ))}
                             </select>
-                            {errors.type && <span className="error-msg">{errors.type}</span>}
+                            {errors.type && <span className={styles.errorMsg}>{errors.type}</span>}
                         </div>
-                        <div className={`field ${errors.budget ? 'invalid' : ''}`}>
+                        <div className={`${styles.field} ${errors.budget ? styles.fieldInvalid : ''}`}>
                             <label htmlFor="budget">Budget range</label>
                             <select
+                                className={styles.select}
                                 id="budget"
                                 name="budget"
                                 value={formData.budget}
@@ -151,11 +156,12 @@ const Contact = ({ profile }) => {
                                     <option key={idx} value={option.value}>{option.label}</option>
                                 ))}
                             </select>
-                            {errors.budget && <span className="error-msg">{errors.budget}</span>}
+                            {errors.budget && <span className={styles.errorMsg}>{errors.budget}</span>}
                         </div>
-                        <div className={`field ${errors.message ? 'invalid' : ''}`}>
+                        <div className={`${styles.field} ${errors.message ? styles.fieldInvalid : ''}`}>
                             <label htmlFor="message">Project details</label>
                             <textarea
+                                className={styles.textarea}
                                 id="message"
                                 name="message"
                                 placeholder="Tell me about your goals, timeline, and team."
@@ -163,11 +169,11 @@ const Contact = ({ profile }) => {
                                 onChange={handleChange}
                                 required
                             ></textarea>
-                            {errors.message && <span className="error-msg">{errors.message}</span>}
+                            {errors.message && <span className={styles.errorMsg}>{errors.message}</span>}
                         </div>
-                        <button className="btn primary" type="submit">Send inquiry</button>
+                        <button className={`${styles.btn} ${styles.btnPrimary}`} type="submit">Send inquiry</button>
                         {statusMessage && (
-                            <div className="form-success is-visible" role="status" aria-live="polite">
+                            <div className={styles.formSuccess} role="status" aria-live="polite">
                                 {statusMessage}
                             </div>
                         )}

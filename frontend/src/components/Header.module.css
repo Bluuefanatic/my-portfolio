@@ -1,0 +1,78 @@
+.header {
+  position: sticky;
+  top: 24px;
+  z-index: 4;
+}
+
+.nav {
+  margin: 24px auto 0;
+  max-width: var(--max-content-width);
+  background: var(--glass);
+  border-radius: var(--radius-pill);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 22px;
+  box-shadow: var(--shadow-lg);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.brandBadge {
+  width: 42px;
+  height: 42px;
+  background: var(--accent);
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+  color: white;
+  font-family: "DM Serif Display", serif;
+  font-size: 1.2rem;
+  box-shadow: 0 8px 20px rgba(255, 106, 61, 0.4);
+}
+
+.navLinks {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.navLinks a {
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  transition: all 0.3s ease;
+}
+
+.navLinks a:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 860px) {
+  .nav {
+    flex-direction: column;
+    gap: 12px;
+    border-radius: var(--radius-lg);
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    position: static;
+  }
+
+  .navLinks {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

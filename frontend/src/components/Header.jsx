@@ -1,12 +1,14 @@
+import styles from './Header.module.css'
+
 const Header = ({ profile }) => {
     return (
-        <header>
-            <nav className="nav">
-                <div className="brand">
-                    <div className="brand-badge">JI</div>
+        <header className={styles.header}>
+            <nav className={styles.nav}>
+                <div className={styles.brand}>
+                    <div className={styles.brandBadge}>JI</div>
                     <span>{profile.name}</span>
                 </div>
-                <div className="nav-links">
+                <div className={styles.navLinks}>
                     <a href="#work">Work</a>
                     <a href="#about">About</a>
                     <a href="#skills">Skills</a>

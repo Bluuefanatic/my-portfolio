@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top left, rgba(255, 215, 160, 0.6), transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(135, 199, 224, 0.45), transparent 55%),
+    linear-gradient(180deg, #fef9f1 0%, #f0e6d5 65%, #f6f0e6 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: all 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

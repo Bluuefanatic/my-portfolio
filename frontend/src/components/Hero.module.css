@@ -1,0 +1,108 @@
+.hero {
+  max-width: var(--max-content-width);
+  margin: var(--space-hero-top) auto 40px;
+  padding: 0 var(--space-page-x);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.heroText h1 {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  margin: 0 0 16px;
+  line-height: 1.02;
+}
+
+.heroText p {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin: 0 0 28px;
+  max-width: 520px;
+}
+
+.heroCta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn {
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  padding: 12px 22px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 14px 30px rgba(255, 106, 61, 0.35);
+}
+
+.btnPrimary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+.btnGhost {
+  border-color: rgba(21, 19, 22, 0.2);
+  background: white;
+}
+
+.btnGhost:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.heroCard {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-lg);
+  display: grid;
+  gap: 22px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.stat span {
+  color: var(--muted);
+}
+
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  background: rgba(11, 75, 90, 0.1);
+  color: var(--ocean);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    margin-top: 40px;
+  }
+}

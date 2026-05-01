@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react'
 import Portfolio from './components/Portfolio'
-import './App.css'
+import styles from './components/App.module.css'
 
 function App() {
     return (
-        <div className="page">
-            <div className="grain" aria-hidden="true"></div>
+        <div className={styles.page}>
+            <div className={styles.grain} aria-hidden="true"></div>
             <Portfolio />
         </div>
     )

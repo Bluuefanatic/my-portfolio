@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import styles from './ProjectModal.module.css'
 
 const ProjectModal = ({ project, onClose }) => {
     useEffect(() => {
@@ -17,17 +18,17 @@ const ProjectModal = ({ project, onClose }) => {
     if (!project) return null
 
     return (
-        <div className={`modal-backdrop ${project ? 'is-open' : ''}`} onClick={(e) => {
+        <div className={`${styles.modalBackdrop} ${project ? styles.isOpen : ''}`} onClick={(e) => {
             if (e.target === e.currentTarget) onClose()
         }}>
-            <div className="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-                <button className="modal-close" type="button" onClick={onClose}>×</button>
+            <div className={styles.modal} role="dialog" aria-modal="true" aria-labelledby="modal-title">
+                <button className={styles.modalClose} type="button" onClick={onClose}>×</button>
                 <div>
-                    <p className="pill">Case Study</p>
+                    <p className={styles.pill}>Case Study</p>
                     <h2 id="modal-title">{project.title}</h2>
                     <p>{project.summary}</p>
                 </div>
-                <div className="modal-meta">
+                <div className={styles.modalMeta}>
                     <div>
                         <h4>Role</h4>
                         <p>{project.role}</p>
@@ -43,15 +44,15 @@ const ProjectModal = ({ project, onClose }) => {
                 </div>
                 <div>
                     <h3>Highlights</h3>
-                    <div className="pill-row">
+                    <div className={styles.pillRow}>
                         {project.highlights.map((highlight, idx) => (
-                            <span key={idx} className="pill">{highlight}</span>
+                            <span key={idx} className={styles.pill}>{highlight}</span>
                         ))}
                     </div>
                 </div>
-                <div className="hero-cta">
-                    <a className="btn primary" href="#contact">Start a similar project</a>
-                    <button className="btn ghost" type="button" onClick={onClose}>Close</button>
+                <div className={styles.heroCta}>
+                    <a className={`${styles.btn} ${styles.btnPrimary}`} href="#contact">Start a similar project</a>
+                    <button className={`${styles.btn} ${styles.btnGhost}`} type="button" onClick={onClose}>Close</button>
                 </div>
             </div>
         </div>
