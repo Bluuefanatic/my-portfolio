@@ -9,7 +9,7 @@ export const experience = [
     {
         id: 2,
         title: 'Computer Science Student · University of Abuja',
-        period: '2018 - 2026',
+        period: '2018 - 2022',
         description:
             'Pursuing BSc in Computer Science with focus on web development, algorithms, and software engineering principles.',
     },
