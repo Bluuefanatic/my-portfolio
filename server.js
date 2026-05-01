@@ -66,3 +66,7 @@ const server = http.createServer((req, res) => {
 
     sendFile(filePath, res);
 });
+
+server.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
