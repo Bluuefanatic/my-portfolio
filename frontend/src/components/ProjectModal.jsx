@@ -1,15 +1,30 @@
+import { useEffect } from 'react'
+
 const ProjectModal = ({ project, onClose }) => {
+    useEffect(() => {
+        if (!project) return undefined
+
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                onClose()
+            }
+        }
+
+        document.addEventListener('keydown', handleKeyDown)
+        return () => document.removeEventListener('keydown', handleKeyDown)
+    }, [project, onClose])
+
     if (!project) return null
 
     return (
         <div className={`modal-backdrop ${project ? 'is-open' : ''}`} onClick={(e) => {
             if (e.target === e.currentTarget) onClose()
         }}>
-            <div className="modal" role="dialog" aria-modal="true">
+            <div className="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
                 <button className="modal-close" type="button" onClick={onClose}>×</button>
                 <div>
                     <p className="pill">Case Study</p>
-                    <h2>{project.title}</h2>
+                    <h2 id="modal-title">{project.title}</h2>
                     <p>{project.summary}</p>
                 </div>
                 <div className="modal-meta">

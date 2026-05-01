@@ -11,12 +11,13 @@ const Contact = ({ profile }) => {
     })
 
     const [errors, setErrors] = useState({})
-    const [successMessage, setSuccessMessage] = useState(false)
+    const [statusMessage, setStatusMessage] = useState('')
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
     const validateForm = () => {
         const newErrors = {}
         if (!formData.name.trim()) newErrors.name = 'Please enter your name.'
-        if (!formData.email.trim() || !formData.email.includes('@')) newErrors.email = 'Please enter a valid email.'
+        if (!emailPattern.test(formData.email.trim())) newErrors.email = 'Please enter a valid email.'
         if (!formData.type) newErrors.type = 'Please select a project type.'
         if (!formData.budget) newErrors.budget = 'Please select a budget range.'
         if (!formData.message.trim()) newErrors.message = 'Please share a short message.'
@@ -33,23 +34,31 @@ const Contact = ({ profile }) => {
         }
 
         try {
-            // Submit to Formspree
+            setStatusMessage('Sending...')
+            const payload = new FormData()
+            payload.append('name', formData.name)
+            payload.append('email', formData.email)
+            payload.append('type', formData.type)
+            payload.append('budget', formData.budget)
+            payload.append('message', formData.message)
+
             const response = await fetch('https://formspree.io/f/mdalgraq', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: payload,
             })
 
             if (response.ok) {
-                setSuccessMessage(true)
+                setStatusMessage('Thanks! Your message has been sent. I will follow up soon.')
                 setFormData({ name: '', email: '', type: '', budget: '', message: '' })
                 setErrors({})
-                setTimeout(() => setSuccessMessage(false), 3000)
+            } else {
+                setStatusMessage('Sorry, something went wrong. Please email me directly.')
             }
         } catch (err) {
-            console.error('Form submission error:', err)
+            setStatusMessage('Sorry, something went wrong. Please email me directly.')
         }
     }
 
@@ -157,9 +166,9 @@ const Contact = ({ profile }) => {
                             {errors.message && <span className="error-msg">{errors.message}</span>}
                         </div>
                         <button className="btn primary" type="submit">Send inquiry</button>
-                        {successMessage && (
+                        {statusMessage && (
                             <div className="form-success is-visible" role="status" aria-live="polite">
-                                Thanks! Your message has been sent. I will follow up soon.
+                                {statusMessage}
                             </div>
                         )}
                     </form>
