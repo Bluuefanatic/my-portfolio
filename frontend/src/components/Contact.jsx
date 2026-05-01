@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { contactInfo } from '../data/contact'
 
 const Contact = ({ profile }) => {
     const [formData, setFormData] = useState({
@@ -64,25 +65,25 @@ const Contact = ({ profile }) => {
         <section className="section" id="contact">
             <div className="cta-band reveal">
                 <div>
-                    <h3>Let's build something together.</h3>
-                    <p>Open for frontend development projects, collaboration, and freelance opportunities.</p>
+                    <h3>{contactInfo.ctaTitle}</h3>
+                    <p>{contactInfo.ctaDescription}</p>
                 </div>
                 <div className="hero-cta">
                     <a className="btn primary" href={`mailto:${profile.email}`}>Email me</a>
                     <a className="btn ghost" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/linkedin.svg" alt="LinkedIn" className="social-icon" />
+                        <img src="/linkedin.svg" alt="LinkedIn" className="social-icon" />
                         LinkedIn
                     </a>
                 </div>
             </div>
             <div className="contact-grid">
                 <div className="contact-card reveal">
-                    <h3>Project intake</h3>
-                    <p>Share a few details and I will respond within 48 hours. If you'd rather email, use the button above.</p>
+                    <h3>{contactInfo.projectIntakeTitle}</h3>
+                    <p>{contactInfo.projectIntakeDescription}</p>
                     <div className="pill-row">
-                        <span className="pill">Frontend development</span>
-                        <span className="pill">React/Next.js</span>
-                        <span className="pill">QA & Testing</span>
+                        {contactInfo.projectIntakePills.map((pill, idx) => (
+                            <span key={idx} className="pill">{pill}</span>
+                        ))}
                     </div>
                 </div>
                 <div className="contact-card reveal">
@@ -122,11 +123,9 @@ const Contact = ({ profile }) => {
                                 onChange={handleChange}
                                 required
                             >
-                                <option value="">Select one</option>
-                                <option value="Web application">Web application</option>
-                                <option value="Frontend development">Frontend development</option>
-                                <option value="Component library">Component library</option>
-                                <option value="Testing & QA">Testing & QA</option>
+                                {contactInfo.projectTypes.map((option, idx) => (
+                                    <option key={idx} value={option.value}>{option.label}</option>
+                                ))}
                             </select>
                             {errors.type && <span className="error-msg">{errors.type}</span>}
                         </div>
@@ -139,11 +138,9 @@ const Contact = ({ profile }) => {
                                 onChange={handleChange}
                                 required
                             >
-                                <option value="">Select one</option>
-                                <option value="$10k-$25k">$10k-$25k</option>
-                                <option value="$25k-$50k">$25k-$50k</option>
-                                <option value="$50k-$100k">$50k-$100k</option>
-                                <option value="$100k+">$100k+</option>
+                                {contactInfo.budgetRanges.map((option, idx) => (
+                                    <option key={idx} value={option.value}>{option.label}</option>
+                                ))}
                             </select>
                             {errors.budget && <span className="error-msg">{errors.budget}</span>}
                         </div>
