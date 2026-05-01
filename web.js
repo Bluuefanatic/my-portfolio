@@ -845,14 +845,14 @@ function htmlPage() {
                 </div>
                 <div class="timeline">
                     <div class="timeline-item reveal">
-                        <h3>Software Engineering Intern  ALX Software Engineering Program</h3>
+                        <h3>Software Engineering Intern · ALX Software Engineering Program</h3>
                         <span>Sept 2023 - Nov 2024</span>
                         <p>Completed intensive program focused on frontend development, fullstack exposure, and software
                             testing fundamentals. Built reusable components for Amber Alert PRO and implemented form
                             validation, reducing input errors by 20%.</p>
                     </div>
                     <div class="timeline-item reveal">
-                        <h3>Computer Science Student  University of Abuja</h3>
+                        <h3>Computer Science Student · University of Abuja</h3>
                         <span>2018 - 2022</span>
                         <p>Pursuing BSc in Computer Science with focus on web development, algorithms, and software
                             engineering principles.</p>
@@ -939,7 +939,7 @@ function htmlPage() {
 
         <footer class="footer">
             <span data-field="location">Based in Nigeria · Available worldwide</span>
-            <span>© <span id="year"></span> <span data-field="name">Joel Iziren</span>. All rights reserved.</span>
+            <span>© <span id="year"></span> <span data-field="name">Joel Iziren</span> · All rights reserved.</span>
         </footer>
     </div>
     <div class="modal-backdrop" data-modal>
