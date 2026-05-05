@@ -330,32 +330,51 @@ Then test:
 
 ## Deployment
 
-### Render / Railway / Heroku
+### Vercel (Recommended)
+
+Choose your deployment approach:
+
+**Option A: Frontend on Vercel + Backend on Render (RECOMMENDED)** ⭐
+- Cleaner separation of concerns
+- Better scalability and cost
+- Fully free tier supported
+- See [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) → **Option A**
+
+**Option B: Fullstack on Vercel**
+- Single platform deployment
+- Both frontend and backend on one Vercel instance
+- Limited free tier resources
+- See [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) → **Option B**
+
+### Quick Start for Vercel
+
+1. **Read the deployment guide:**
+   ```bash
+   cat VERCEL_DEPLOYMENT.md
+   ```
+
+2. **Check the deployment checklist:**
+   ```bash
+   cat DEPLOYMENT_CHECKLIST.md
+   ```
+
+3. **Push to GitHub and deploy:**
+   ```bash
+   git add .
+   git commit -m "chore: prepare for Vercel deployment"
+   git push origin main
+   ```
+
+### Other Platforms
+
+**Render / Railway / Heroku:**
 
 1. Push to GitHub
 2. Connect repository to deployment platform
 3. Set `NODE_ENV=production` and email env vars
 4. Deploy – platform runs `npm run build` then `npm start`
 
-### Vercel (Frontend Only)
-
-Frontend can deploy independently to Vercel; configure API proxy to backend:
-
-**`frontend/vite.config.js`:**
-```javascript
-export default {
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://your-api-domain.com',
-        changeOrigin: true
-      }
-    }
-  }
-}
-```
-
-### Docker
+**Docker:**
 
 Create `Dockerfile` in project root:
 

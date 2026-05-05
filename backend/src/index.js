@@ -17,12 +17,16 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 // Middleware
-// In production, frontend is served from same origin, so CORS not needed
-// In development, allow localhost:5173 (Vite dev server)
+// CORS configuration: 
+// - Production with separate frontend: use FRONTEND_URL env var
+// - Production on same origin: disable CORS
+// - Development: allow localhost:5173 (Vite dev server)
+const corsOrigin = process.env.NODE_ENV === 'production'
+    ? (process.env.FRONTEND_URL || false)  // Use FRONTEND_URL if set, else disable CORS
+    : 'http://localhost:5173'
+
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production'
-        ? false  // Disable CORS in production (same origin)
-        : 'http://localhost:5173',
+    origin: corsOrigin,
     credentials: true
 }))
 app.use(express.json())
