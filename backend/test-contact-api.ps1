@@ -2,49 +2,49 @@ $testCases = @(
     @{
         name = "Valid submission"
         body = @{
-            name = "Jane Doe"
-            email = "jane@email.com"
-            type = "React/Next.js"
-            budget = "`$50k-`$100k"
+            name    = "Jane Doe"
+            email   = "jane@email.com"
+            type    = "React/Next.js"
+            budget  = "`$50k-`$100k"
             message = "I need help building a React application with advanced features and scalability."
         }
     },
     @{
         name = "Missing email"
         body = @{
-            name = "John Smith"
-            type = "Frontend development"
-            budget = "`$25k-`$50k"
+            name    = "John Smith"
+            type    = "Frontend development"
+            budget  = "`$25k-`$50k"
             message = "Need a responsive portfolio website."
         }
     },
     @{
         name = "Invalid email"
         body = @{
-            name = "Bob Jones"
-            email = "not-an-email"
-            type = "QA & Testing"
-            budget = "`$10k-`$25k"
+            name    = "Bob Jones"
+            email   = "not-an-email"
+            type    = "QA & Testing"
+            budget  = "`$10k-`$25k"
             message = "Looking for testing expertise."
         }
     },
     @{
         name = "Short message"
         body = @{
-            name = "Alice Brown"
-            email = "alice@email.com"
-            type = "Frontend development"
-            budget = "`$10k-`$25k"
+            name    = "Alice Brown"
+            email   = "alice@email.com"
+            type    = "Frontend development"
+            budget  = "`$10k-`$25k"
             message = "Need help"
         }
     },
     @{
         name = "Invalid budget"
         body = @{
-            name = "Charlie White"
-            email = "charlie@email.com"
-            type = "React/Next.js"
-            budget = "`$500k+"
+            name    = "Charlie White"
+            email   = "charlie@email.com"
+            type    = "React/Next.js"
+            budget  = "`$500k+"
             message = "This is a very detailed message about our complex project requirements and timeline."
         }
     }
@@ -65,12 +65,14 @@ foreach ($test in $testCases) {
         
         Write-Host "[SUCCESS] Response: " -ForegroundColor Green
         $response | ConvertTo-Json | Write-Host
-    } catch {
+    }
+    catch {
         Write-Host "[ERROR] Response: " -ForegroundColor Red
         if ($_.Exception.Response) {
             $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
             $streamReader.ReadToEnd() | ConvertFrom-Json | ConvertTo-Json | Write-Host
-        } else {
+        }
+        else {
             $_.Exception.Message | Write-Host
         }
     }
