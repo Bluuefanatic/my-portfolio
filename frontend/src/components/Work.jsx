@@ -2,7 +2,7 @@ import { projects } from '../data/projects'
 import styles from './Work.module.css'
 import shared from '../styles/shared.module.css'
 
-const Work = ({ onProjectClick }) => {
+const Work = ({ onProjectSelect }) => {
     const swatchClassMap = {
         'gradient-blue-green': styles.gradientBlueGreen,
         'gradient-pink-red': styles.gradientPinkRed,
@@ -33,7 +33,7 @@ const Work = ({ onProjectClick }) => {
                         </div>
                         <button
                             className={`${shared.btn} ${shared.btnGhost}`}
-                            onClick={() => onProjectClick(project)}
+                            onClick={() => onProjectSelect(project.id)}
                         >
                             View case
                         </button>

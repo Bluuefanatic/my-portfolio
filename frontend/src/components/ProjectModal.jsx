@@ -1,20 +1,9 @@
-import { useEffect } from 'react'
 import styles from './ProjectModal.module.css'
 import shared from '../styles/shared.module.css'
+import useEscapeKey from '../hooks/useEscapeKey'
 
 const ProjectModal = ({ project, onClose }) => {
-    useEffect(() => {
-        if (!project) return undefined
-
-        const handleKeyDown = (event) => {
-            if (event.key === 'Escape') {
-                onClose()
-            }
-        }
-
-        document.addEventListener('keydown', handleKeyDown)
-        return () => document.removeEventListener('keydown', handleKeyDown)
-    }, [project, onClose])
+    useEscapeKey(Boolean(project), onClose)
 
     if (!project) return null
 
