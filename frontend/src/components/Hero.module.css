@@ -25,7 +25,7 @@
 }
 
 .heroCard {
-    background: white;
+    background: var(--surface);
     border-radius: var(--radius-lg);
     padding: 30px;
     box-shadow: var(--shadow-lg);

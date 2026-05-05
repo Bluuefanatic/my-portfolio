@@ -54,7 +54,7 @@
 }
 
 .navLinks a:hover {
-  background: white;
+  background: var(--interactive-hover);
   transform: translateY(-2px);
 }
 
@@ -72,12 +72,8 @@
 }
 
 .themeToggle:hover {
-  background: white;
+  background: var(--interactive-hover);
   transform: translateY(-2px);
-}
-
-[data-theme="dark"] .themeToggle:hover {
-  background: rgba(255, 255, 255, 0.15);
 }
 
 @media (max-width: 860px) {

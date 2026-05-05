@@ -38,7 +38,7 @@
 }
 
 .pill {
-  background: rgba(11, 75, 90, 0.1);
+  background: var(--surface-muted);
   color: var(--ocean);
   padding: 6px 12px;
   border-radius: var(--radius-pill);
@@ -69,11 +69,12 @@
 }
 
 .btnGhost {
-  border-color: rgba(21, 19, 22, 0.2);
-  background: white;
+  border-color: var(--surface-border);
+  background: var(--surface);
 }
 
 .btnGhost:hover {
   border-color: var(--accent);
+  background: var(--interactive-hover);
   transform: translateY(-2px);
 }

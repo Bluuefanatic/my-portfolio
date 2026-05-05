@@ -1,6 +1,11 @@
 :root {
   --ink: #151316;
   --paper: #f6f0e6;
+  --surface: rgba(255, 255, 255, 0.96);
+  --surface-soft: #f8f3ea;
+  --surface-border: rgba(21, 19, 22, 0.08);
+  --surface-muted: rgba(11, 75, 90, 0.1);
+  --interactive-hover: rgba(21, 19, 22, 0.06);
   --accent: #ff6a3d;
   --accent-dark: #c8481d;
   --ocean: #0b4b5a;
@@ -31,6 +36,11 @@
 [data-theme="dark"] {
   --ink: #f6f0e6;
   --paper: #0d0b10;
+  --surface: rgba(24, 21, 30, 0.96);
+  --surface-soft: rgba(255, 255, 255, 0.06);
+  --surface-border: rgba(246, 240, 230, 0.12);
+  --surface-muted: rgba(26, 143, 160, 0.16);
+  --interactive-hover: rgba(255, 255, 255, 0.08);
   --accent: #ff7f52;
   --accent-dark: #ffa070;
   --ocean: #1a8fa0;

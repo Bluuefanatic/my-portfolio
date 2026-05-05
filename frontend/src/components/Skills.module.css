@@ -8,7 +8,7 @@
 }
 
 .projectCard {
-  background: white;
+  background: var(--surface);
   padding: 22px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
