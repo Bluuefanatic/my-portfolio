@@ -37,29 +37,30 @@ const Contact = ({ profile }) => {
 
         try {
             setStatusMessage('Sending...')
-            const payload = new FormData()
-            payload.append('name', formData.name)
-            payload.append('email', formData.email)
-            payload.append('type', formData.type)
-            payload.append('budget', formData.budget)
-            payload.append('message', formData.message)
 
-            const response = await fetch('https://formspree.io/f/mdalgraq', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
-                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
                 },
-                body: payload,
+                body: JSON.stringify(formData),
             })
+
+            const data = await response.json()
 
             if (response.ok) {
                 setStatusMessage('Thanks! Your message has been sent. I will follow up soon.')
                 setFormData({ name: '', email: '', type: '', budget: '', message: '' })
                 setErrors({})
+            } else if (response.status === 400 && data.details) {
+                // Handle validation errors from backend
+                setStatusMessage('Please fix the errors below.')
+                setErrors(data.details)
             } else {
                 setStatusMessage('Sorry, something went wrong. Please email me directly.')
             }
         } catch (err) {
+            console.error('Contact form error:', err)
             setStatusMessage('Sorry, something went wrong. Please email me directly.')
         }
     }

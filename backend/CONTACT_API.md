@@ -156,7 +156,7 @@ The API handles multiple error scenarios gracefully:
 
 ## Integration with Frontend
 
-The frontend contact form (Contact.jsx) submits via Formspree fallback or directly to `/api/contact` endpoint:
+The frontend contact form ([Contact.jsx](../../frontend/src/components/Contact.jsx)) submits directly to the `/api/contact` endpoint:
 
 ```javascript
 const response = await fetch('/api/contact', {
@@ -168,8 +168,15 @@ const response = await fetch('/api/contact', {
 })
 ```
 
+The form maintains UX states throughout the submission:
+- **Default**: Empty form with validation rules
+- **Sending**: Shows "Sending..." message while awaiting response
+- **Success** (200): Shows thank you message, clears form data
+- **Validation Error** (400): Shows specific field errors and "Please fix the errors below." message
+- **Server Error** (500): Shows "Sorry, something went wrong. Please email me directly."
+
 Expected status codes:
 - `200`: Success
-- `400`: Validation error
+- `400`: Validation error (returns field-specific error details)
 - `429`: Rate limited
 - `500`: Server error
