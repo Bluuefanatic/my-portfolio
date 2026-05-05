@@ -10,6 +10,7 @@
         "build": "npm --prefix frontend run build && npm --prefix backend run build",
         "build:frontend": "npm --prefix frontend run build",
         "build:backend": "npm --prefix backend run build",
+        "start": "NODE_ENV=production node backend/src/index.js",
         "preview": "npm --prefix frontend run preview",
         "install:all": "npm install && npm --prefix frontend install && npm --prefix backend install"
     },

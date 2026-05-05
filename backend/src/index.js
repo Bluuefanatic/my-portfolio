@@ -17,10 +17,13 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 // Middleware
+// In production, frontend is served from same origin, so CORS not needed
+// In development, allow localhost:5173 (Vite dev server)
 app.use(cors({
     origin: process.env.NODE_ENV === 'production'
-        ? 'https://yourdomain.com'
-        : 'http://localhost:5173'
+        ? false  // Disable CORS in production (same origin)
+        : 'http://localhost:5173',
+    credentials: true
 }))
 app.use(express.json())
 app.use(apiLimiter)
@@ -92,10 +95,10 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 
 // Serve static files from frontend build in production
 if (process.env.NODE_ENV === 'production') {
-    const frontendBuildPath = join(__dirname, '../frontend/dist')
+    const frontendBuildPath = join(__dirname, '../../frontend/dist')
     app.use(express.static(frontendBuildPath))
 
-    // Serve index.html for client-side routing
+    // Serve index.html for client-side routing (SPA fallback)
     app.get('*', (req, res) => {
         res.sendFile(join(frontendBuildPath, 'index.html'))
     })
