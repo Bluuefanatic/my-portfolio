@@ -26,3 +26,19 @@
   --bp-md: 860px;
   --bp-sm: 600px;
 }
+
+/* Dark mode theme */
+[data-theme="dark"] {
+  --ink: #f6f0e6;
+  --paper: #0d0b10;
+  --accent: #ff7f52;
+  --accent-dark: #ffa070;
+  --ocean: #1a8fa0;
+  --sun: #f5d374;
+  --muted: rgba(246, 240, 230, 0.65);
+  --glass: rgba(13, 11, 16, 0.6);
+
+  --shadow-lg: 0 30px 60px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 16px 32px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
