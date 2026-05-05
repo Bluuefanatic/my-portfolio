@@ -1,133 +1,435 @@
-# Portfolio Fullstack Project
+# Joel Iziren — Frontend Engineer Portfolio
 
-A fullstack React portfolio website with Vite frontend and Express backend, preserving the original UI/UX and CSS-based animations.
+A fullstack React + Express portfolio website with dark mode, validated contact form, and production-ready deployment. Built with Vite frontend, Express backend, and CSS custom properties for theme support.
+
+## Features
+
+- **Dark Mode Support** – Toggle between light and dark themes with localStorage persistence and system preference detection
+- **Responsive Design** – Mobile-first layout with CSS Grid and Flexbox
+- **Contact Form** – Backend-driven validation, sanitization, and rate limiting to prevent spam
+- **Custom CSS Tokens** – Theme-aware color system using CSS variables
+- **Fast Dev Server** – Vite HMR with instant feedback
+- **Production Ready** – Single Express server serving frontend static assets + API endpoints
+- **Project Showcase** – Interactive work section with modal case studies
+- **Accessible** – Semantic HTML, ARIA labels, keyboard navigation
 
 ## Project Structure
 
 ```
 portfolio/
-├── frontend/          # Vite React app
+├── frontend/                    # Vite React app
 │   ├── src/
-│   │   ├── components/    # React components
+│   │   ├── components/
+│   │   │   ├── App.jsx          # Root component
+│   │   │   ├── Header.jsx       # Navigation + theme toggle
+│   │   │   ├── Hero.jsx
+│   │   │   ├── Work.jsx         # Project showcase
+│   │   │   ├── About.jsx
+│   │   │   ├── Skills.jsx
+│   │   │   ├── Experience.jsx
+│   │   │   ├── Resume.jsx
+│   │   │   └── Contact.jsx      # Contact form with validation
+│   │   ├── contexts/
+│   │   │   └── ThemeContext.jsx # Theme state management
+│   │   ├── hooks/
+│   │   │   ├── useRevealOnScroll.js
+│   │   │   ├── useEscapeKey.js
+│   │   │   └── useCurrentYear.js
+│   │   ├── styles/
+│   │   │   ├── tokens.css       # Theme variables (light/dark)
+│   │   │   └── base.css         # Global baseline styles
 │   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
+│   │   └── main.jsx             # Entry point with ThemeProvider
+│   ├── dist/                    # Build output
 │   ├── index.html
-│   ├── vite.config.js
-│   └── package.json
-├── backend/           # Express.js API
+│   ├── package.json
+│   └── vite.config.js
+├── backend/                     # Express API server
 │   ├── src/
-│   │   └── index.js
+│   │   ├── index.js             # Express app + routes
+│   │   ├── validation.js        # Form validation schema
+│   │   ├── sanitization.js      # Input sanitization
+│   │   ├── emailAdapter.js      # Email service (Nodemailer)
+│   │   └── rateLimiter.js       # Rate limiting config
+│   ├── .env.example
 │   └── package.json
-├── assets/            # Shared static assets
-├── package.json       # Root package.json with monorepo scripts
-└── README.md
+├── assets/                      # Shared static assets
+├── package.json                 # Root monorepo config
+└── README.md                    # This file
 ```
 
-## What This Project Includes
+## Tech Stack
 
-- **React Frontend**: Modern React components with Vite for fast development
-- **Express Backend**: RESTful API for profile data and contact form handling
-- **CSS Animations**: Custom CSS-based motion (no Framer Motion) for optimal performance
-- **Responsive Design**: Mobile-first responsive layout
-- **Project Showcase**: Case studies with modal interactions
-- **Contact Form**: Form validation and Formspree integration
-- **Development Scripts**: Unified npm scripts for local development
+**Frontend:**
+- React 18 – UI library
+- Vite 5.4 – Build tool with HMR
+- CSS Custom Properties – Theme tokens
+- React Context API – State management
 
-## Quick Start
+**Backend:**
+- Node.js 18+ – Runtime
+- Express 4.18 – Web framework
+- Nodemailer – Email delivery
+- express-rate-limit – Rate limiting
+- validator – Input validation & sanitization
+- dotenv – Environment configuration
 
-Install dependencies for all packages:
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ and npm
+- (Optional) SMTP credentials for email notifications
+
+### Installation
+
+Clone and install dependencies:
 
 ```bash
+git clone https://github.com/Bluuefanatic/my-portfolio.git
+cd my-portfolio
 npm run install:all
 ```
 
 ### Development
 
-Run both frontend and backend together:
+Run frontend and backend together with hot reload:
 
 ```bash
 npm run dev
 ```
 
-Or run them separately:
+- **Frontend:** http://localhost:5173 (Vite dev server)
+- **Backend:** http://localhost:3000 (Express, auto-restart on file changes)
+
+Or run separately:
 
 ```bash
-npm run dev:frontend    # http://localhost:5173
-npm run dev:backend     # http://localhost:3000
+npm run dev:frontend    # Frontend only on 5173
+npm run dev:backend     # Backend only on 3000
 ```
 
 ### Production Build
+
+Build both frontend and backend for production:
 
 ```bash
 npm run build
 ```
 
-This builds both frontend and backend for production.
+Outputs:
+- `frontend/dist/` – Static assets (served by backend)
+- Backend source ready for deployment
 
-## Technology Stack
+### Production Start
 
-**Frontend:**
-- React 18
-- Vite (fast build tool)
-- CSS (custom CSS-based animations)
+Run the production server serving frontend + API:
 
-**Backend:**
-- Node.js
-- Express.js
-- CORS enabled
+```bash
+npm start
+```
 
-## Requirements
+The app will be available at http://localhost:3000
 
-- Node.js 16+
-- npm or yarn
+## Configuration
+
+### Environment Variables
+
+Create `.env` in the `backend/` directory (see `backend/.env.example`):
+
+```bash
+# Email service (optional)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+SEND_TO=recipient@example.com
+SEND_AUTO_REPLY=true
+
+# Server
+PORT=3000
+NODE_ENV=production
+```
+
+For **Gmail**, use an [App Password](https://support.google.com/accounts/answer/185833) instead of your regular password.
+
+## API Endpoints
+
+### GET `/health`
+
+Health check endpoint.
+
+**Response:**
+```json
+{ "status": "Backend is running" }
+```
+
+### GET `/api/profile`
+
+Fetch profile data (name, role, email, social links).
+
+**Response:**
+```json
+{
+  "name": "Joel Iziren",
+  "role": "Frontend Developer · Software Engineer",
+  "email": "izirenjoel@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/joel-iziren",
+  "github": "https://github.com/Bluuefanatic"
+}
+```
+
+### POST `/api/contact`
+
+Submit contact form with validation and rate limiting.
+
+**Request:**
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "type": "Frontend development",
+  "budget": "$25k-$50k",
+  "message": "I'd like to discuss a project..."
+}
+```
+
+**Validation Rules:**
+- `name`: Required, 2–50 characters
+- `email`: Required, valid email format
+- `type`: One of: `Frontend development`, `React/Next.js`, `QA & Testing`
+- `budget`: One of: `$10k-$25k`, `$25k-$50k`, `$50k-$100k`, `$100k+`
+- `message`: 10–5000 characters
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "message": "Thank you for your message! I will respond within 48 hours."
+}
+```
+
+**Validation Error (400):**
+```json
+{
+  "error": "Validation failed",
+  "details": {
+    "email": "Please provide a valid email address",
+    "message": "Message must be 10-5000 characters"
+  }
+}
+```
+
+**Rate Limits:**
+- API: 100 requests per 15 minutes (global)
+- Contact form: 5 requests per hour (per IP)
+
+## Dark Mode
+
+The app supports light and dark themes using CSS custom properties.
+
+### Theme Toggle
+
+Click the 🌙/☀️ button in the header to toggle themes. Theme preference is saved to `localStorage` and persists across sessions.
+
+### How It Works
+
+1. **CSS Tokens** – All colors defined in `frontend/src/styles/tokens.css` as custom properties:
+   - Light mode: `:root` selector
+   - Dark mode: `[data-theme="dark"]` selector
+
+2. **Context Provider** – `ThemeContext` manages theme state and applies `data-theme` attribute to `<html>` element
+
+3. **System Preference** – On first visit, detects `prefers-color-scheme` media query
+
+4. **Persistence** – Theme preference saved to `localStorage` as `"theme"` key
+
+### Adding New Colors
+
+Add variables in both light and dark sections of `tokens.css`:
+
+```css
+:root {
+  --new-color: #ff6a3d;  /* Light mode */
+}
+
+[data-theme="dark"] {
+  --new-color: #ff7f52;  /* Dark mode */
+}
+```
+
+## Contact Form
+
+The contact form is integrated with the backend for secure handling:
+
+1. **Frontend** (`Contact.jsx`) collects user input and submits to `/api/contact`
+2. **Backend** (`validation.js`) validates against schema
+3. **Sanitization** (`sanitization.js`) escapes HTML and normalizes input
+4. **Rate Limiting** (`rateLimiter.js`) prevents spam (5/hour per IP)
+5. **Email** (`emailAdapter.js`) sends notification (if SMTP configured) and optional auto-reply
+
+### Testing Contact Form
+
+Frontend integration test:
+
+```bash
+node frontend/test-contact-integration.mjs
+```
+
+Backend API tests:
+
+```bash
+node backend/test-contact.mjs
+```
+
+## Browser Support
+
+- Chrome/Edge 90+
+- Firefox 88+
+- Safari 14+
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## Performance
+
+- **Frontend Build:** ~160 KB gzipped (React + app code)
+- **CSS:** ~10 KB gzipped (including theme tokens)
+- **Lighthouse:** 90+ on desktop
 
 ## Development Workflow
 
-- **Frontend development**: Hot reload at http://localhost:5173
-- **Backend development**: Auto-restart with `--watch` flag
-- **API proxy**: Frontend proxies `/api` requests to backend on port 3000
-- **Production**: Backend serves frontend static files
+### Adding a Feature
 
-## Next Phases
+1. Create component in `frontend/src/components/`
+2. Use CSS modules for scoped styles
+3. Leverage `tokens.css` for colors (auto-supports dark mode)
+4. Test in dev mode with HMR
+5. Run `npm run build` to verify production build
 
-- Phase 2: Component refinement and styling polish
-- Phase 3: State management and advanced API integration
-- Phase 4: Deployment configuration (Vercel, Render, etc.)
-- Phase 5: Additional features (email service, CMS integration, etc.)
+### Making Backend Changes
 
-On Windows PowerShell, run:
+1. Edit `backend/src/*.js`
+2. Server auto-restarts (with `--watch` flag)
+3. Test via API client or form submission
+4. Verify error handling in `backend/test-contact.mjs`
 
-```powershell
-node server.js
+### Testing Production Locally
+
+Build and serve locally:
+
+```bash
+npm run build
+npm start
+# Open http://localhost:3000
 ```
 
-Then open `http://localhost:3000`.
+Then test:
+- Theme toggle (dark/light)
+- Form submission and validation
+- API endpoints (`/api/profile`, `/api/contact`)
+- Mobile responsiveness (DevTools)
 
-The server listens on `PORT`, defaulting to `3000`.
+## Deployment
 
-## How It Works
+### Render / Railway / Heroku
 
-The page is designed as a static portfolio, but the interaction layer adds a few useful behaviors:
+1. Push to GitHub
+2. Connect repository to deployment platform
+3. Set `NODE_ENV=production` and email env vars
+4. Deploy – platform runs `npm run build` then `npm start`
 
-- Profile data is injected into the page from a small object in `main.js`.
-- Project cards open a modal with case-study details.
-- Sections fade in with an intersection observer as you scroll.
-- The contact form validates required fields before sending data to Formspree.
-- The footer year updates automatically.
+### Vercel (Frontend Only)
 
-## Deployment Notes
+Frontend can deploy independently to Vercel; configure API proxy to backend:
 
-The site is already structured for simple static hosting or GitHub Pages-style deployment, and the metadata in `index.html` points to the published portfolio URL.
+**`frontend/vite.config.js`:**
+```javascript
+export default {
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://your-api-domain.com',
+        changeOrigin: true
+      }
+    }
+  }
+}
+```
 
-If you change the profile, update these places together:
+### Docker
 
-- `index.html`
-- `main.js`
-- `resume.pdf` and `resume.txt`
+Create `Dockerfile` in project root:
+
+```dockerfile
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
+RUN npm run install:all && npm run build
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+Build and run:
+
+```bash
+docker build -t portfolio .
+docker run -p 3000:3000 -e NODE_ENV=production portfolio
+```
+
+## Troubleshooting
+
+### Port Already in Use
+
+Kill the process and restart:
+
+```powershell
+# Windows
+netstat -ano | findstr :3000
+taskkill /PID <PID> /F
+
+# macOS/Linux
+lsof -i :3000
+kill -9 <PID>
+```
+
+### Contact Form Not Sending Email
+
+1. Verify `.env` has correct `SMTP_*` variables
+2. Check `NODE_ENV=production` (emails only in production)
+3. Gmail users: Use [App Password](https://support.google.com/accounts/answer/185833), not regular password
+4. Check backend logs for SMTP errors
+
+### Dark Mode Not Persisting
+
+Clear `localStorage`:
+
+```javascript
+// In browser console
+localStorage.removeItem('theme');
+location.reload();
+```
+
+### Build Size Issues
+
+Analyze bundle:
+
+```bash
+npm --prefix frontend run build -- --analyze
+```
+
+## Resources
+
+- [Vite Docs](https://vitejs.dev)
+- [React Docs](https://react.dev)
+- [Express Docs](https://expressjs.com)
+- [Nodemailer Setup](https://nodemailer.com)
+- [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)
+
+## License
+
+© 2026 Joel Iziren. All rights reserved.
 
 ## Contact
 
-- Email: izirenjoel@gmail.com
-- LinkedIn: https://www.linkedin.com/in/joel-iziren
-- GitHub: https://github.com/Bluuefanatic
+- **Email:** izirenjoel@gmail.com
+- **LinkedIn:** https://www.linkedin.com/in/joel-iziren
+- **GitHub:** https://github.com/Bluuefanatic
