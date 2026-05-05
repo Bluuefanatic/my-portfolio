@@ -11,4 +11,10 @@
     mix-blend-mode: multiply;
     opacity: 0.4;
     z-index: 1;
+    transition: mix-blend-mode 0.3s ease, opacity 0.3s ease;
+}
+
+[data-theme="dark"] .grain {
+    mix-blend-mode: screen;
+    opacity: 0.15;
 }

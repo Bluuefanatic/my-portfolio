@@ -6,11 +6,21 @@ body {
   margin: 0;
   font-family: "Space Grotesk", sans-serif;
   color: var(--ink);
-  background: radial-gradient(circle at top left, rgba(255, 215, 160, 0.6), transparent 55%),
+  background-color: var(--paper);
+  background-image: 
+    radial-gradient(circle at top left, rgba(255, 215, 160, 0.6), transparent 55%),
     radial-gradient(circle at 80% 10%, rgba(135, 199, 224, 0.45), transparent 55%),
     linear-gradient(180deg, #fef9f1 0%, #f0e6d5 65%, #f6f0e6 100%);
   min-height: 100vh;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] body {
+  background-image: 
+    radial-gradient(circle at top left, rgba(51, 20, 10, 0.4), transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(15, 40, 50, 0.3), transparent 55%),
+    linear-gradient(180deg, #1a1620 0%, #0f0d14 65%, #0d0b10 100%);
 }
 
 a {
