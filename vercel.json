@@ -7,7 +7,5 @@
   "env": {
     "NODE_ENV": "production",
     "PORT": "3000"
-  },
-  "envPrefix": "VERCEL_",
-  "public": false
+  }
 }
