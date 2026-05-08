@@ -1,35 +1,56 @@
 Joel Iziren - Resume
 
 PROFESSIONAL SUMMARY
-Frontend Developer with hands-on experience building responsive web applications using React, Next.js, and Tailwind CSS. 
-Skilled in reusable component design, form validation with Formik, and automated testing (Cypress, Appium, JMeter). 
-Experienced in team-based collaboration delivering clean, maintainable user interfaces.
+Frontend-focused Software Engineer with experience building responsive web applications and low-level systems
+for blockchain data processing. Skilled in React, Next.js, and Tailwind CSS, with hands-on experience in Bitcoin
+transaction parsing, chain analysis, and data visualization. Strong understanding of transaction mechanics, data
+structures, and building end-to-end systems without reliance on external APIs.
 
 TECHNICAL SKILLS
 Languages: JavaScript, TypeScript
 Frameworks: React.js, Next.js, Node.js, Tailwind CSS, Formik
-Tools: Git, GitHub, Browser DevTools, Cypress, Appium, JMeter
+Tools & Others: Git, GitHub, Cypress, Appium, JMeter, Browser DevTools, Wireless Android Debugging
+Concepts: REST APIs, Blockchain Fundamentals, Data Structures, Responsive Design
 
 PROFESSIONAL EXPERIENCE
-ALX Software Engineering Program
-Software Engineering Intern | Sept 2023 - Nov 2024
-Frontend Specialization
-- Completed intensive program focused on frontend development, fullstack exposure, and software testing fundamentals
-- Built reusable components and dynamic pages for Amber Alert PRO, improving UI consistency and UX
-- Implemented form handling and validation with Formik, reducing input errors by 20%
-- Applied Tailwind CSS and responsive design principles across all pages
-- Maintained clean GitHub workflow with standardized commits
+ALX Software Engineering Program | Sept 2023 - Nov 2024
+Software Engineering Intern | Frontend Specialization
+- Completed an intensive program covering frontend development, backend fundamentals, and software testing.
+- Built reusable UI components and dynamic pages (Home, Report, View Missing Persons, Login, Signup) for a
+	production-style application.
+- Implemented form handling and validation with Formik, reducing input errors and improving user interaction reliability.
+- Applied Tailwind CSS and responsive design principles to ensure consistency across devices.
+- Maintained structured Git workflows with clear commit history, improving collaboration and version control.
+- Gained hands-on experience with automated testing tools including Cypress, Appium, and JMeter.
 
 PROJECTS
-Amber Alert PRO (Team Project) | 2024
-- Developed web application for reporting missing persons and sending real-time alerts
-- Built reusable UI components with React, Next.js, Tailwind CSS, and Formik
-- Implemented backend features with Node.js, Express.js, MongoDB, and Firebase Authentication
-- Integrated Google Maps API for location-based reporting
+Summer of Bitcoin Challenge 2026
+Bitcoin Chain Analysis Suite | Backend, Systems, Data Analysis
+- Built a Bitcoin transaction parser to decode raw blockchain data from blk.dat, rev.dat, and xor.dat files without
+	relying on external APIs or full nodes.
+- Implemented a PSBT (Partially Signed Bitcoin Transaction) builder to support secure transaction construction and
+	serialization workflows.
+- Developed a chain analysis engine using heuristics such as Common Input Ownership, change detection, CoinJoin
+	detection, and address reuse.
+- Designed transaction classification logic to categorize activity into simple payments, CoinJoins, consolidations, batch
+	payments, and self-transfers.
+- Generated structured JSON reports and Markdown summaries for multi-block datasets to support reproducibility and
+	automated evaluation.
+- Built an interactive web dashboard to visualize transaction metrics including fee rates, script types, and heuristic
+	signals.
+- Integrated block file uploads via UI while preserving analysis pipelines and dataset consistency.
+- Validated fee calculations, virtual size (vsize), witness parsing, and undo-data alignment at a low level.
+
+Amber Alert PRO | 2024
+Team Project | Frontend & Fullstack Development
+- Built a fullstack web application for reporting missing persons and enabling real-time alert distribution.
+- Developed reusable UI components and dynamic pages using React, Next.js, Tailwind CSS, and Formik.
+- Implemented backend services with Node.js, Express.js, MongoDB, and Firebase Authentication.
+- Integrated Google Maps API for location-based reporting and visualization.
 
 EDUCATION
-University of Abuja
-BSc. Computer Science | 2022
+University of Abuja | 2022
+BSc. Computer Science | Data Structures, Algorithms, Computer Networks
 
 CONTACT
 Email: izirenjoel@gmail.com
