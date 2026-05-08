@@ -1,20 +1,20 @@
 export const about = [
     {
         id: 1,
-        title: 'Component-driven',
+        title: 'Systems Builder',
         description:
-            'I build reusable, maintainable components with React and Next.js, focusing on clean architecture and consistent UI patterns across applications.',
+            'I design and build end-to-end systems from the ground up—from blockchain transaction parsing to interactive dashboards—without relying on external APIs. Strong focus on data structures and low-level implementation details.',
     },
     {
         id: 2,
-        title: 'Quality-focused',
+        title: 'Blockchain & Data Focused',
         description:
-            'I implement automated testing with Cypress and Appium, ensuring reliability and reducing bugs before they reach production.',
+            'Hands-on experience in Bitcoin transaction mechanics, chain analysis heuristics, and data visualization. Building reproducible systems with structured JSON reports and Markdown summaries for complex datasets.',
     },
     {
         id: 3,
-        title: 'Team collaboration',
+        title: 'Frontend-first systems engineer',
         description:
-            'Experienced working in team environments, maintaining clean Git workflows, and collaborating on UX improvements and code reviews.',
+            'Skilled in responsive UI development with React and Next.js, paired with solid backend fundamentals in Node.js and data structure design. Comfortable moving between frontend and systems-level work.',
     },
 ]
