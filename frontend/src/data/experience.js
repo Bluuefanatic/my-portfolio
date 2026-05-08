@@ -2,7 +2,7 @@ export const experience = [
     {
         id: 1,
         title: 'Backend & Systems Engineer · Summer of Bitcoin Challenge 2026',
-        period: 'May 2026 - Present',
+        period: 'February - March 2026',
         description:
             'Built Bitcoin transaction parser for raw blockchain data (blk.dat, rev.dat, xor.dat). Implemented PSBT builder, chain analysis engine with heuristics (CoinJoin detection, change detection, address reuse), and web dashboard for transaction visualization.',
     },
