@@ -11,5 +11,5 @@ export const profile = {
     email: 'izirenjoel@gmail.com',
     linkedin: 'https://www.linkedin.com/in/joel-iziren',
     github: 'https://github.com/Bluuefanatic',
-    resumeUrl: 'resume.pdf',
+    resumeUrl: '/resume.pdf',
 }
