@@ -14,8 +14,8 @@ const contactSchema = {
   },
   type: {
     required: true,
-    enum: ['Frontend development', 'React/Next.js', 'QA & Testing'],
-    error: 'Project type must be one of: Frontend development, React/Next.js, QA & Testing',
+    enum: ['Web application', 'Frontend development', 'Component library', 'Testing & QA', 'React/Next.js', 'QA & Testing'],
+    error: 'Project type must be one of: Web application, Frontend development, Component library, Testing & QA, React/Next.js, QA & Testing',
   },
   budget: {
     required: true,
