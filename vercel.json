@@ -6,7 +6,9 @@
   "framework": null,
   "regions": ["iad1"],
   "env": {
-    "NODE_ENV": "production",
     "PORT": "3000"
+  },
+  "buildEnv": {
+    "NODE_ENV": "development"
   }
 }
