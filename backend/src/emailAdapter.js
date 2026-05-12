@@ -3,6 +3,16 @@ import nodemailer from 'nodemailer'
 // Initialize email transporter
 let transporter = null
 
+const maskEmail = (email) => {
+  if (!email || !email.includes('@')) {
+    return 'unset'
+  }
+
+  const [localPart, domain] = email.split('@')
+  const visibleLocal = localPart.length > 2 ? `${localPart.slice(0, 2)}***` : '***'
+  return `${visibleLocal}@${domain}`
+}
+
 const initializeEmailTransporter = () => {
   const emailService = process.env.EMAIL_SERVICE || 'gmail'
   const emailUser = process.env.EMAIL_USER
@@ -21,6 +31,7 @@ const initializeEmailTransporter = () => {
         pass: emailPass,
       },
     })
+    console.log(`📧 Email transporter initialized for ${emailService} (${maskEmail(emailUser)})`)
   }
 
   return transporter
@@ -92,10 +103,10 @@ const verifyEmailConfiguration = async () => {
 
   try {
     await transporter.verify()
-    console.log('✓ Email transporter verified successfully')
+    console.log(`✓ Email transporter verified successfully for ${process.env.EMAIL_SERVICE || 'gmail'} (${maskEmail(process.env.EMAIL_USER)})`)
     return true
   } catch (error) {
-    console.error('✗ Email transporter verification failed:', error)
+    console.error(`✗ Email transporter verification failed for ${process.env.EMAIL_SERVICE || 'gmail'} (${maskEmail(process.env.EMAIL_USER)}):`, error)
     return false
   }
 }

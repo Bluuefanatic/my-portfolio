@@ -114,6 +114,7 @@ app.listen(PORT, async () => {
 
     // Initialize and verify email configuration
     if (process.env.NODE_ENV === 'production') {
+        console.log('📧 Production startup: initializing email transporter and verifying SMTP access')
         initializeEmailTransporter()
         await verifyEmailConfiguration()
     } else {
